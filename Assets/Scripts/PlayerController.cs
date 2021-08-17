@@ -5,27 +5,23 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 8.0f;
+    [SerializeField] private float runSpeed = 12.0f;
     [SerializeField] private float gravityModifier = 2.0f;
     [SerializeField] private float jumpPower = 8.0f;
-    [SerializeField] private CharacterController _characterController;
-    [SerializeField] private Transform cameraTransform;
     [SerializeField] private float mouseSensitivity = 2.0f;
-    private bool canJump;
-    [SerializeField] private Transform groundCheckPoint;
-    [SerializeField] private LayerMask whatIsGround;
-
+    private bool canJump, canDoubleJump;
     private Vector3 moveInput;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
+    [SerializeField] private Transform cameraTransform;
+    [SerializeField] private Transform groundCheckPoint;
+    [SerializeField] private CharacterController _characterController;
+    [SerializeField] private LayerMask whatIsGround;
+    [SerializeField] private Animator anim;
+    
     void Update()
     {
         PlayerMovement();
         CameraRotation();
+        PlayBobbing();        
     }
 
     void PlayerMovement()
@@ -37,23 +33,19 @@ public class PlayerController : MonoBehaviour
 
         moveInput = horizontalMove + verticalMove;
         moveInput.Normalize();
-        moveInput *= moveSpeed;
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            moveInput *= runSpeed;
+        }
+        else
+        {
+            moveInput *= moveSpeed;   
+        }
 
         moveInput.y = yStore;
 
-        moveInput.y += Physics.gravity.y * gravityModifier * Time.deltaTime;
-
-        if (_characterController.isGrounded)
-        {
-            moveInput.y = Physics.gravity.y * gravityModifier * Time.deltaTime;
-        }
-
-        canJump = Physics.OverlapSphere(groundCheckPoint.position, .5f, whatIsGround).Length > 0;
-
-        if (Input.GetKeyDown(KeyCode.Space) && canJump)
-        {
-            moveInput.y = jumpPower;
-        }
+        Jump();
 
         _characterController.Move(moveInput * Time.deltaTime);
     }
@@ -67,5 +59,36 @@ public class PlayerController : MonoBehaviour
 
         cameraTransform.rotation =
             Quaternion.Euler(cameraTransform.rotation.eulerAngles + new Vector3(-mouseInput.y, 0f, 0f));
+    }
+
+    void Jump()
+    {
+        moveInput.y += Physics.gravity.y * gravityModifier * Time.deltaTime;
+
+        if (_characterController.isGrounded)
+        {
+            moveInput.y = Physics.gravity.y * gravityModifier * Time.deltaTime;
+        }
+
+        canJump = Physics.OverlapSphere(groundCheckPoint.position, .5f, whatIsGround).Length > 0;
+
+        if (Input.GetKeyDown(KeyCode.Space) && canJump)
+        {
+            moveInput.y = jumpPower;
+
+            canDoubleJump = true;
+        }
+        else if (canDoubleJump && Input.GetKeyDown(KeyCode.Space))
+        {
+            moveInput.y = jumpPower;
+
+            canDoubleJump = false;
+        }
+    }
+
+    void PlayBobbing()
+    {
+        anim.SetFloat("moveSpeed", moveInput.magnitude);
+        anim.SetBool("onGround",canJump);
     }
 }
