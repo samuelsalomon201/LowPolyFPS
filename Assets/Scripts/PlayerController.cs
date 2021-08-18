@@ -16,11 +16,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CharacterController _characterController;
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private Animator anim;
+
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private Transform firePoint;
     
     void Update()
     {
         PlayerMovement();
         CameraRotation();
+        Shooting();
         PlayBobbing();        
     }
 
@@ -90,5 +94,13 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetFloat("moveSpeed", moveInput.magnitude);
         anim.SetBool("onGround",canJump);
+    }
+
+    void Shooting()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Instantiate(bullet, firePoint.position, firePoint.rotation);
+        }
     }
 }
