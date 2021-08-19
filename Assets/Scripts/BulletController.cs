@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 10.0f;
+    [SerializeField] private float moveSpeed = 13.0f;
     [SerializeField] private float lifeTime = 8.0f;
 
     [SerializeField] private Rigidbody rigidBody;
+
+    [SerializeField] private GameObject impactEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -31,5 +33,6 @@ public class BulletController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
+        Instantiate(impactEffect, transform.position + transform.forward * (-moveSpeed * Time.deltaTime), transform.rotation);
     }
 }
