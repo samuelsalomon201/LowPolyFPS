@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 13.0f;
-    [SerializeField] private float lifeTime = 8.0f;
-
+    [SerializeField] private float moveSpeed = 30.0f;
+    [SerializeField] private float lifeTime = 5.0f;
     [SerializeField] private Rigidbody rigidBody;
-
     [SerializeField] private GameObject impactEffect;
+    [SerializeField] private int damage = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +31,17 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.tag == "Enemy")
+        {
+            other.gameObject.GetComponent<EnemyHealthController>().DamageEnemy(damage);
+        }
+        else if (other.gameObject.tag == "Target")
+        {
+            Destroy(other.gameObject);
+        }
+
         Destroy(gameObject);
-        Instantiate(impactEffect, transform.position + transform.forward * (-moveSpeed * Time.deltaTime), transform.rotation);
+        Instantiate(impactEffect, transform.position + transform.forward * (-moveSpeed * Time.deltaTime),
+            transform.rotation);
     }
 }

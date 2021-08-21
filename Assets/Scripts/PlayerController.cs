@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+    
     [SerializeField] private float moveSpeed = 8.0f;
     [SerializeField] private float runSpeed = 12.0f;
     [SerializeField] private float gravityModifier = 2.0f;
@@ -19,13 +22,18 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform firePoint;
-    
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Update()
     {
         PlayerMovement();
         CameraRotation();
         Shooting();
-        PlayBobbing();        
+        PlayBobbing();
     }
 
     void PlayerMovement()
@@ -44,7 +52,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            moveInput *= moveSpeed;   
+            moveInput *= moveSpeed;
         }
 
         moveInput.y = yStore;
@@ -93,13 +101,27 @@ public class PlayerController : MonoBehaviour
     void PlayBobbing()
     {
         anim.SetFloat("moveSpeed", moveInput.magnitude);
-        anim.SetBool("onGround",canJump);
+        anim.SetBool("onGround", canJump);
     }
 
     void Shooting()
     {
         if (Input.GetMouseButtonDown(0))
         {
+            RaycastHit hit;
+            if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, 50.0f))
+            {
+                if (Vector3.Distance(cameraTransform.position, hit.point) > 2.0f)
+                {
+                    firePoint.LookAt(hit.point);
+                }
+            }
+            else
+            {
+                firePoint.LookAt(cameraTransform.position + (cameraTransform.forward * 30.0f));
+            }
+
+
             Instantiate(bullet, firePoint.position, firePoint.rotation);
         }
     }

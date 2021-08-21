@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1202718217473888688}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.435, y: 9.41, z: 0.951}
-  m_LocalScale: {x: 0.075753, y: 0.06250385, z: 0.060245}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -110,10 +110,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd5441d0d9f06094ca129fb3334169e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 13
-  lifeTime: 10
+  moveSpeed: 30
+  lifeTime: 5
   rigidBody: {fileID: 1202718217473888682}
   impactEffect: {fileID: 2746721728765411811, guid: 1792949f48f60da438e6b84e218ae45a, type: 3}
+  damage: 1
 --- !u!54 &1202718217473888682
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -171,7 +172,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.2
+  m_Time: 0.5
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -179,8 +180,8 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.05161283
+        time: 0.008595987
+        value: 0.09032172
         inSlope: 0
         outSlope: 0
         tangentMode: 0
