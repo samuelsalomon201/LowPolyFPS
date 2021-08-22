@@ -5,51 +5,105 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 8.0f;
-    [SerializeField] private Rigidbody rigidBody;
     private bool chasing;
-    private float distanceToChase = 10.0f, distanceToLose = 15.0f;
-
-    private Vector3 targetPoint, startPoint;
-
-    [SerializeField] private NavMeshAgent agent;
-
-    [SerializeField] private float keepChasingTime;
+    private float distanceToChase = 10.0f, distanceToLose = 15.0f, distanceToStop = 2.0f;
     private float chaseCounter;
+    private Vector3 targetPoint, startPoint;
+    [SerializeField] private float keepChasingTime = 5.0f;
+    [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private float fireRate, waitBetweenShots, timeToShoot = 1.0f;
+    private float fireCount, shotWaitCounter, shootTimeCounter;
 
-    // Start is called before the first frame update
     void Start()
     {
         startPoint = transform.position;
+
+        shootTimeCounter = timeToShoot;
+        shotWaitCounter = waitBetweenShots;
     }
 
-    // Update is called once per frame
     void Update()
+    {
+        ChaseAndShoot();
+    }
+
+    void ChaseAndShoot()
     {
         targetPoint = PlayerController.instance.transform.position;
         targetPoint.y = transform.position.y;
-        
-        
+
         if (!chasing)
         {
             if (Vector3.Distance(transform.position, targetPoint) < distanceToChase)
             {
                 chasing = true;
+                shootTimeCounter = timeToShoot;
+                shotWaitCounter = waitBetweenShots;
+            }
+
+            if (chaseCounter > 0)
+            {
+                chaseCounter -= Time.deltaTime;
+                if (chaseCounter <= 0)
+                {
+                    agent.destination = startPoint;
+                }
             }
         }
         else
         {
-            //transform.LookAt(targetPoint);
-
-            //rigidBody.velocity = transform.forward * moveSpeed;
-
-            agent.destination = targetPoint;
+            if (Vector3.Distance(transform.position, targetPoint) > distanceToStop)
+            {
+                agent.destination = targetPoint;
+            }
+            else
+            {
+                agent.destination = transform.position;
+            }
 
             if (Vector3.Distance(transform.position, targetPoint) > distanceToLose)
             {
                 chasing = false;
 
-                agent.destination = startPoint;
+                chaseCounter = keepChasingTime;
+            }
+
+            if (shotWaitCounter > 0)
+            {
+                shotWaitCounter -= Time.deltaTime;
+
+                if (shotWaitCounter <= 0)
+                {
+                    shootTimeCounter = timeToShoot;
+                }
+            }
+            else
+            {
+                shootTimeCounter -= Time.deltaTime;
+
+                if (shootTimeCounter > 0)
+                {
+                    fireCount -= Time.deltaTime;
+
+                    if (fireCount <= 0)
+                    {
+                        fireCount = fireRate;
+
+                        firePoint.LookAt(PlayerController.instance.transform.position + new Vector3(0f, 1.5f, 0f));
+                        
+                        // check the angle to player
+
+                        Instantiate(bullet, firePoint.position, firePoint.rotation);
+                    }
+
+                    agent.destination = transform.position;
+                }
+                else
+                {
+                    shotWaitCounter = waitBetweenShots;
+                }
             }
         }
     }

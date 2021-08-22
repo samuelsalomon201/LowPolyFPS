@@ -10,6 +10,7 @@ public class BulletController : MonoBehaviour
     [SerializeField] private Rigidbody rigidBody;
     [SerializeField] private GameObject impactEffect;
     [SerializeField] private int damage = 1;
+    [SerializeField] private bool damageEnemy, damagePlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -31,14 +32,19 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy" && damageEnemy)
         {
             other.gameObject.GetComponent<EnemyHealthController>().DamageEnemy(damage);
+        }
+        else if (other.gameObject.tag == "Player" && damagePlayer)
+        {
+            Debug.Log("Hit Player At " + transform.position);
         }
         else if (other.gameObject.tag == "Target")
         {
             Destroy(other.gameObject);
         }
+
 
         Destroy(gameObject);
         Instantiate(impactEffect, transform.position + transform.forward * (-moveSpeed * Time.deltaTime),
