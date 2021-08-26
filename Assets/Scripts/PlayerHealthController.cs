@@ -44,6 +44,10 @@ public class PlayerHealthController : MonoBehaviour
             {
                 gameObject.SetActive(false);
                 Debug.Log("Player Health Is 0");
+
+                currentHealth = 0;
+                
+                GameManager.instance.PlayerDied();
             }
 
             invincCounter = invincibleLenght;

@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     private bool chasing;
-    private float distanceToChase = 10.0f, distanceToLose = 15.0f, distanceToStop = 2.0f;
+    private float distanceToChase = 20.0f, distanceToLose = 25.0f, distanceToStop = 2.0f;
     private float chaseCounter;
     private Vector3 targetPoint, startPoint;
     [SerializeField] private float keepChasingTime = 5.0f;
@@ -93,41 +93,44 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
-                shootTimeCounter -= Time.deltaTime;
-
-                if (shootTimeCounter > 0)
+                if (PlayerController.instance.gameObject.activeInHierarchy)
                 {
-                    fireCount -= Time.deltaTime;
+                                    
+                    shootTimeCounter -= Time.deltaTime;
 
-                    if (fireCount <= 0)
+                    if (shootTimeCounter > 0)
                     {
-                        fireCount = fireRate;
+                        fireCount -= Time.deltaTime;
 
-                        firePoint.LookAt(PlayerController.instance.transform.position + new Vector3(0f, 0.5f, 0f));
-
-                        // check the angle to player
-                        Vector3 targetDir = PlayerController.instance.transform.position - transform.position;
-                        float angle = Vector3.SignedAngle(targetDir, transform.forward, Vector3.up);
-
-                        if (Mathf.Abs(angle) < 30.0f)
+                        if (fireCount <= 0)
                         {
-                            Instantiate(bullet, firePoint.position, firePoint.rotation);
+                            fireCount = fireRate;
+
+                            firePoint.LookAt(PlayerController.instance.transform.position + new Vector3(0f, 0.5f, 0f));
+
+                            // check the angle to player
+                            Vector3 targetDir = PlayerController.instance.transform.position - transform.position;
+                            float angle = Vector3.SignedAngle(targetDir, transform.forward, Vector3.up);
+
+                            if (Mathf.Abs(angle) < 30.0f)
+                            {
+                                Instantiate(bullet, firePoint.position, firePoint.rotation);
                             
-                            anim.SetTrigger("fireShot");
+                                anim.SetTrigger("fireShot");
+                            }
+                            else
+                            {
+                                shotWaitCounter = waitBetweenShots;
+                            }
                         }
-                        else
-                        {
-                            shotWaitCounter = waitBetweenShots;
-                        }
-                    }
 
-                    agent.destination = transform.position;
+                        agent.destination = transform.position;
+                    }
+                    else
+                    {
+                        shotWaitCounter = waitBetweenShots;
+                    }
                 }
-                else
-                {
-                    shotWaitCounter = waitBetweenShots;
-                }
-                
                 anim.SetBool("isMoving", false);
             }
         }

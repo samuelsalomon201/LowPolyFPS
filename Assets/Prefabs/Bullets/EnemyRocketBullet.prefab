@@ -110,11 +110,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd5441d0d9f06094ca129fb3334169e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 30
-  lifeTime: 5
+  moveSpeed: 100
+  lifeTime: 2
   rigidBody: {fileID: 6053930937507545948}
   impactEffect: {fileID: 2746721728765411811, guid: 1792949f48f60da438e6b84e218ae45a, type: 3}
-  damage: 10
+  damage: 40
   damageEnemy: 0
   damagePlayer: 1
 --- !u!54 &6053930937507545948
@@ -174,7 +174,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.5
+  m_Time: 1
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
