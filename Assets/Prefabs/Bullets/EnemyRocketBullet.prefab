@@ -114,7 +114,11 @@ MonoBehaviour:
   lifeTime: 2
   rigidBody: {fileID: 6053930937507545948}
   impactEffect: {fileID: 2746721728765411811, guid: 1792949f48f60da438e6b84e218ae45a, type: 3}
-  damage: 10
+<<<<<<< HEAD
+  damage: 20
+=======
+  damage: 40
+>>>>>>> parent of 5362e5c (Added New Map :())
   damageEnemy: 0
   damagePlayer: 1
 --- !u!54 &6053930937507545948

@@ -123,6 +123,27 @@ public class PlayerController : MonoBehaviour
 
 
             Instantiate(bullet, firePoint.position, firePoint.rotation);
+            
+            
+        }if (Input.GetMouseButton(1))
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, 50.0f))
+            {
+                if (Vector3.Distance(cameraTransform.position, hit.point) > 2.0f)
+                {
+                    firePoint.LookAt(hit.point);
+                }
+            }
+            else
+            {
+                firePoint.LookAt(cameraTransform.position + (cameraTransform.forward * 30.0f));
+            }
+
+
+            Instantiate(bullet, firePoint.position, firePoint.rotation);
         }
+        
+        
     }
 }
