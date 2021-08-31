@@ -111,7 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keepChasingTime: 5
   agent: {fileID: 1094170742351323458}
-  bullet: {fileID: 2923118486483593927, guid: 72f91fcb1aa17f24387e43a203d88077, type: 3}
+  bullet: {fileID: 1202718217473888688, guid: 073b9a992ebf38f45870ce6e67f111f0, type: 3}
   firePoint: {fileID: 1094170742634689167}
   fireRate: 0.3
   waitBetweenShots: 2

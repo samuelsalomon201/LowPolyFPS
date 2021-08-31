@@ -114,9 +114,9 @@ MonoBehaviour:
   lifeTime: 1
   rigidBody: {fileID: 1202718217473888682}
   impactEffect: {fileID: 2746721728765411811, guid: 1792949f48f60da438e6b84e218ae45a, type: 3}
-  damage: 1
-  damageEnemy: 1
-  damagePlayer: 0
+  damage: 10
+  damageEnemy: 0
+  damagePlayer: 1
 --- !u!54 &1202718217473888682
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -153,7 +153,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: de8c4fcf304cb084a894aaaae81104c2, type: 2}
+  - {fileID: 2100000, guid: 769f91c624a14894c99ab4532b120966, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
