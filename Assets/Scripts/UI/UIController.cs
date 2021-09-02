@@ -9,7 +9,7 @@ public class UIController : MonoBehaviour
     public static UIController instance;
 
     public Slider healthSlider;
-    [SerializeField] public Text healthText;
+    public Text healthText, ammoText;
 
     private void Awake()
     {

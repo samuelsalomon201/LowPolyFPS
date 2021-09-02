@@ -31,6 +31,11 @@ public class PlayerController : MonoBehaviour
         instance = this;
     }
 
+    private void Start()
+    {
+        UIController.instance.ammoText.text = "Ammo: " + activeGun.currentAmmo;
+    }
+
     void FixedUpdate()
     {
         PlayerMovement();
@@ -109,7 +114,7 @@ public class PlayerController : MonoBehaviour
 
     void Shooting()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && activeGun.fireCounter <= 0)
         {
             RaycastHit hit;
             if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, 50.0f))
@@ -123,16 +128,33 @@ public class PlayerController : MonoBehaviour
             {
                 firePoint.LookAt(cameraTransform.position + (cameraTransform.forward * 30.0f));
             }
-
-
+            
             //Instantiate(bullet, firePoint.position, firePoint.rotation);
             FireShot();
+        }
+
+        //repeats shots :)
+        if (Input.GetMouseButton(0) && activeGun.canAutoFire)
+        {
+            if (activeGun.fireCounter <= 0)
+            {
+                FireShot();
+            }
         }
     }
 
     public void FireShot()
     {
-        Instantiate(activeGun.bullet, firePoint.position, firePoint.rotation);
+        if (activeGun.currentAmmo > 0)
+        {
+            activeGun.currentAmmo--;
+
+            Instantiate(activeGun.bullet, firePoint.position, firePoint.rotation);
+
+            activeGun.fireCounter = activeGun.fireRate;
+            
+            UIController.instance.ammoText.text = "Ammo: " + activeGun.currentAmmo;
+        }
     }
 
     public void LowerGravity()
