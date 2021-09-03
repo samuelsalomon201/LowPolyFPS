@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform firePoint;
 
-    [SerializeField] private Gun activeGun;
+    [SerializeField] public Gun activeGun;
 
     private void Awake()
     {
