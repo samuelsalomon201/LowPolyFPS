@@ -1,8 +1,41 @@
 fileFormatVersion: 2
-guid: 6969982403e300a4bb5d62f20bee8df1
+guid: 69d99b87d8ebe844b8cc3f729b3857a4
 ModelImporter:
   serializedVersion: 20200
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -6068515173651232492
+    second: Armature|CockAction.001
+  - first:
+      74: 2986386761548156804
+    second: Armature|CylinderAction.001
+  - first:
+      74: 3609414435588710285
+    second: Armature|CylinderFlipOutControlAction.001
+  - first:
+      74: 5284956067111657411
+    second: Armature|CylinderRotationControlAction.001
+  - first:
+      74: -3620637933483131629
+    second: Armature|Empty.001Action
+  - first:
+      74: 6914186477651995811
+    second: Armature|EmptyAction.001
+  - first:
+      74: 7402965688517420269
+    second: Armature|GunBodyAction.001
+  - first:
+      74: -779715455583317699
+    second: Armature|Reload Animation
+  - first:
+      74: 2126547105437587583
+    second: Armature|Shooting
+  - first:
+      74: 8223974915341815797
+    second: Armature|TriggerAction.001
+  - first:
+      74: 2337550454365070951
+    second: Armature|TriggerControlAction.002
   externalObjects: {}
   materials:
     materialImportMode: 2

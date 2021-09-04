@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 8.0f;
     [SerializeField] private float runSpeed = 12.0f;
     [SerializeField] private float gravityModifier = 2.0f;
-    [SerializeField] private float lowGravity = 0.3f;
+    [SerializeField] private float lowGravity = 0.1f;
     [SerializeField] private float jumpPower = 8.0f;
     [SerializeField] private float mouseSensitivity = 2.0f;
     private bool canJump, canDoubleJump;
@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform firePoint;
 
     [SerializeField] public Gun activeGun;
+    public List<Gun> allGuns = new List<Gun>();
 
     private void Awake()
     {
@@ -160,8 +161,8 @@ public class PlayerController : MonoBehaviour
     public void LowerGravity()
     {
         gravityModifier = lowGravity;
-        moveSpeed = 2.0f;
-        runSpeed = 2.0f;
+        moveSpeed = 1.0f;
+        runSpeed = 20.0f;
     }
 
     public void GravityBack()
