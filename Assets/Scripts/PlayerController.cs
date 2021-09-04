@@ -21,11 +21,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private Animator anim;
 
-    [SerializeField] private GameObject bullet;
+    //[SerializeField] private GameObject bullet;
     [SerializeField] private Transform firePoint;
 
     [SerializeField] public Gun activeGun;
     public List<Gun> allGuns = new List<Gun>();
+    [SerializeField] private int currentGun = 0;
 
     private void Awake()
     {
@@ -34,7 +35,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        UIController.instance.ammoText.text = "Ammo: " + activeGun.currentAmmo;
+        currentGun--;
+        SwitchGun();
     }
 
     void FixedUpdate()
@@ -129,7 +131,7 @@ public class PlayerController : MonoBehaviour
             {
                 firePoint.LookAt(cameraTransform.position + (cameraTransform.forward * 30.0f));
             }
-            
+
             //Instantiate(bullet, firePoint.position, firePoint.rotation);
             FireShot();
         }
@@ -142,6 +144,21 @@ public class PlayerController : MonoBehaviour
                 FireShot();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            SwitchGun();
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            CameraController.instance.ZoomIn(activeGun.zoomAmount);
+        }
+
+        if (Input.GetMouseButtonUp(1))
+        {
+            CameraController.instance.ZoomOut();
+        }
     }
 
     public void FireShot()
@@ -153,9 +170,28 @@ public class PlayerController : MonoBehaviour
             Instantiate(activeGun.bullet, firePoint.position, firePoint.rotation);
 
             activeGun.fireCounter = activeGun.fireRate;
-            
+
             UIController.instance.ammoText.text = "Ammo: " + activeGun.currentAmmo;
         }
+    }
+
+    public void SwitchGun()
+    {
+        activeGun.gameObject.SetActive(false);
+
+        currentGun++;
+
+        if (currentGun >= allGuns.Count)
+        {
+            currentGun = 0;
+        }
+
+        activeGun = allGuns[currentGun];
+        activeGun.gameObject.SetActive(true);
+        
+        UIController.instance.ammoText.text = "Ammo: " + activeGun.currentAmmo;
+
+        firePoint.position = activeGun.firePoint.position;
     }
 
     public void LowerGravity()
