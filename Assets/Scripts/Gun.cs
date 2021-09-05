@@ -17,6 +17,8 @@ public class Gun : MonoBehaviour
     [SerializeField] public Transform firePoint;
     [SerializeField] public float zoomAmount;
 
+    [SerializeField] public string gunName;
+
     // Start is called before the first frame update
     void Start()
     {

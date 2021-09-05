@@ -177,6 +177,9 @@ MonoBehaviour:
   - {fileID: 7958791855813034367}
   - {fileID: 1773092942}
   currentGun: 0
+  adsPoint: {fileID: 0}
+  gunHolder: {fileID: 0}
+  adsSpeed: 2
 --- !u!95 &1884123720880258242
 Animator:
   serializedVersion: 3
@@ -235,10 +238,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1884123721017944854}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.325, y: -0.16, z: 1.121}
-  m_LocalScale: {x: 0.075753, y: 0.06250385, z: 0.060245}
+  m_LocalPosition: {x: 0.32500005, y: -0.1599999, z: 1.1209989}
+  m_LocalScale: {x: 0.075753, y: 0.06250386, z: 0.060245}
   m_Children: []
-  m_Father: {fileID: 1884123722175711812}
+  m_Father: {fileID: 1884123721686813255}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1884123721055285948
@@ -272,7 +275,7 @@ Transform:
   - {fileID: 987365674962416596}
   - {fileID: 53429507}
   m_Father: {fileID: 1884123721686813255}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7958791855813034367
 MonoBehaviour:
@@ -293,6 +296,7 @@ MonoBehaviour:
   currentAmmo: 100
   pickupAmount: 100
   firePoint: {fileID: 53429507}
+  zoomAmount: 0
 --- !u!1 &1884123721614743983
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,7 +324,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.792, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1884123721017944849}
+  - {fileID: 3819048796138137716}
   - {fileID: 1884123721686813255}
   m_Father: {fileID: 1884123720880258240}
   m_RootOrder: 1
@@ -349,9 +353,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1884123721686813252}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.141, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1884123721017944849}
   - {fileID: 1646531523578158590}
   - {fileID: 1884123721055285951}
   - {fileID: 1006040952908154981}
@@ -515,7 +520,7 @@ Transform:
   - {fileID: 7377079718450270558}
   - {fileID: 575554658}
   m_Father: {fileID: 1884123721686813255}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1773092942
 MonoBehaviour:
@@ -536,6 +541,37 @@ MonoBehaviour:
   currentAmmo: 7
   pickupAmount: 6
   firePoint: {fileID: 575554658}
+  zoomAmount: 0
+--- !u!1 &5445353400093837175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3819048796138137716}
+  m_Layer: 0
+  m_Name: ADSPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3819048796138137716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5445353400093837175}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1884123722175711812}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6457725031251667777
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,7 +603,7 @@ Transform:
   - {fileID: 738203956727394736}
   - {fileID: 1533190977}
   m_Father: {fileID: 1884123721686813255}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4934310685680920513
 MonoBehaviour:
@@ -588,6 +624,7 @@ MonoBehaviour:
   currentAmmo: 10
   pickupAmount: 25
   firePoint: {fileID: 1533190977}
+  zoomAmount: 0
 --- !u!1001 &736737270437057599
 PrefabInstance:
   m_ObjectHideFlags: 0

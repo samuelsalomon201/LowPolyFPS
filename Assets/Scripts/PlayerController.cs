@@ -26,7 +26,12 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] public Gun activeGun;
     public List<Gun> allGuns = new List<Gun>();
+    public List<Gun> unlockableGuns = new List<Gun>();
     [SerializeField] private int currentGun = 0;
+
+    [SerializeField] private Transform adsPoint, gunHolder;
+    private Vector3 gunStartPosition;
+    [SerializeField] private float adsSpeed = 2.0f;
 
     private void Awake()
     {
@@ -37,6 +42,8 @@ public class PlayerController : MonoBehaviour
     {
         currentGun--;
         SwitchGun();
+
+        gunStartPosition = gunHolder.localPosition;
     }
 
     void FixedUpdate()
@@ -155,6 +162,15 @@ public class PlayerController : MonoBehaviour
             CameraController.instance.ZoomIn(activeGun.zoomAmount);
         }
 
+        if (Input.GetMouseButton(1))
+        {
+            gunHolder.position = Vector3.MoveTowards(gunHolder.position, adsPoint.position, adsSpeed * Time.deltaTime);
+        }
+        else
+        {
+            gunHolder.localPosition = Vector3.MoveTowards(gunHolder.localPosition, gunStartPosition, adsSpeed * Time.deltaTime);
+        }
+
         if (Input.GetMouseButtonUp(1))
         {
             CameraController.instance.ZoomOut();
@@ -188,10 +204,37 @@ public class PlayerController : MonoBehaviour
 
         activeGun = allGuns[currentGun];
         activeGun.gameObject.SetActive(true);
-        
+
         UIController.instance.ammoText.text = "Ammo: " + activeGun.currentAmmo;
 
         firePoint.position = activeGun.firePoint.position;
+    }
+
+    public void AddGun(string gunToAdd)
+    {
+        Debug.Log("Adding " + gunToAdd);
+
+        bool gunUnlocked = false;
+
+        if (unlockableGuns.Count > 0)
+        {
+            for (int i = 0; i < unlockableGuns.Count; i++)
+            {
+                if (unlockableGuns[i].gunName == gunToAdd)
+                {
+                    gunUnlocked = true;
+                    allGuns.Add(unlockableGuns[i]);
+                    unlockableGuns.RemoveAt(i);
+                    i = unlockableGuns.Count;
+                }
+            }
+        }
+
+        if (gunUnlocked)
+        {
+            currentGun = allGuns.Count - 2;
+            SwitchGun();
+        }
     }
 
     public void LowerGravity()
