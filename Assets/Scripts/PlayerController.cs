@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 8.0f;
     [SerializeField] private float runSpeed = 12.0f;
     [SerializeField] private float gravityModifier = 2.0f;
-    [SerializeField] private float lowGravity = 0.01f;
+    [SerializeField] private float lowGravity = 0.001f;
     [SerializeField] private float jumpPower = 8.0f;
     [SerializeField] private float mouseSensitivity = 2.0f;
     private bool canJump, canDoubleJump;
@@ -239,14 +239,14 @@ public class PlayerController : MonoBehaviour
 
     public void LowerGravity()
     {
-        // gravityModifier = lowGravity;
-        moveSpeed = 1.0f;
-        runSpeed = 1.0f;
+        gravityModifier = lowGravity;
+        moveSpeed = 4.0f;
+        runSpeed = 6.0f;
     }
 
     public void GravityBack()
     {
-        // gravityModifier = 2.0f;
+        gravityModifier = 2.0f;
         moveSpeed = 8.0f;
         runSpeed = 12.0f;
     }

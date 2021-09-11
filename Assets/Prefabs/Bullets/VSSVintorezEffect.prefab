@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2746721728765411809}
   - component: {fileID: 2746721728765411810}
   m_Layer: 0
-  m_Name: SniperEffect
+  m_Name: VSSVintorezEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4816,7 +4816,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 30812b6c608144145a98e552800acfe1, type: 2}
+  - {fileID: 2100000, guid: 27bd9f97defbdb341acd08354478d053, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
