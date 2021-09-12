@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 80
-  lifeTime: 1
+  lifeTime: 20
   rigidBody: {fileID: 1202718217473888682}
   impactEffect: {fileID: 2746721728765411811, guid: b333ece9e7b0a784a8838244414e2460, type: 3}
   damage: 3

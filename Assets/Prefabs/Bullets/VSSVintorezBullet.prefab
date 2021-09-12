@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 27bd9f97defbdb341acd08354478d053, type: 2}
+  - {fileID: 2100000, guid: de8c4fcf304cb084a894aaaae81104c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 90
-  lifeTime: 3
+  lifeTime: 20
   rigidBody: {fileID: 1202718217473888682}
   impactEffect: {fileID: 2746721728765411811, guid: e31526ecc0735f941b9029b7b8ca44c6, type: 3}
   damage: 5
@@ -153,7 +153,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 27bd9f97defbdb341acd08354478d053, type: 2}
+  - {fileID: 2100000, guid: de8c4fcf304cb084a894aaaae81104c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
