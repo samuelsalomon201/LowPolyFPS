@@ -288,7 +288,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 25
+      scalar: 35
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4877,7 +4877,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 10
+  m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3545522357176883079
 Rigidbody:
@@ -5003,6 +5003,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a5318aef74f42d42bb062e4cedd5004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 25
+  damage: 30
   damageEnemy: 1
   damagePlayer: 1
