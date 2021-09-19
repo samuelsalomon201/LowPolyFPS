@@ -15,6 +15,8 @@ public class UIController : MonoBehaviour
 
     [SerializeField] private float damageAlpha = 0.3f, damageFadeSpeed = 0.5f;
 
+    [SerializeField] public GameObject pauseScreen;
+
     private void Awake()
     {
         instance = this;

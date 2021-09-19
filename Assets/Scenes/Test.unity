@@ -1232,7 +1232,7 @@ Transform:
   m_GameObject: {fileID: 993768309}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 1, z: 5}
+  m_LocalScale: {x: 5, y: 1, z: 100}
   m_Children: []
   m_Father: {fileID: 841416563}
   m_RootOrder: 0
@@ -1513,7 +1513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  runSpeed: 15
+  runSpeed: 16.3
   gravityModifier: 2
   lowGravity: 0.001
   jumpPower: 8
@@ -2135,7 +2135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7d3a55e373ed1154baeb6e458e72b875, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0054
+      value: -0.00535
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7d3a55e373ed1154baeb6e458e72b875, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2752,7 +2752,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1094170742351323460, guid: 09b14ca5bab2005408e130c38c4f02c8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.34
+      value: -489.1
       objectReference: {fileID: 0}
     - target: {fileID: 1094170742351323460, guid: 09b14ca5bab2005408e130c38c4f02c8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3372,7 +3372,7 @@ MonoBehaviour:
   currentAmmo: 8
   pickupAmount: 6
   firePoint: {fileID: 1884123721534290343}
-  zoomAmount: 8
+  zoomAmount: 15
   gunName: Sniper
 --- !u!4 &1884123720734599734
 Transform:
@@ -3967,7 +3967,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5887340078949300914}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0014, y: -0.397, z: 0.89}
+  m_LocalPosition: {x: -0.00132, y: -0.397, z: 0.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 429258625}
@@ -4099,7 +4099,7 @@ MonoBehaviour:
   fireRate: 0.5
   fireCounter: 0
   currentAmmo: 6
-  pickupAmount: 6
+  pickupAmount: 20
   firePoint: {fileID: 1884123720734599734}
   zoomAmount: 45
   gunName: RL
@@ -5045,14 +5045,6 @@ PrefabInstance:
     - target: {fileID: 6094936193404248814, guid: c2ada744f76fff54a9fdc5d9da393015, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6094936193404248815, guid: c2ada744f76fff54a9fdc5d9da393015, type: 3}
-      propertyPath: damageAlpha
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6094936193404248815, guid: c2ada744f76fff54a9fdc5d9da393015, type: 3}
-      propertyPath: damageFadeSpeed
-      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2ada744f76fff54a9fdc5d9da393015, type: 3}
