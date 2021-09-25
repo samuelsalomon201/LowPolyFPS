@@ -107,12 +107,16 @@ public class PlayerController : MonoBehaviour
             moveInput.y = jumpPower;
 
             canDoubleJump = true;
+            
+            AudioManager.instance.PlaySFX(0);
         }
         else if (canDoubleJump && Input.GetKeyDown(KeyCode.Space))
         {
             moveInput.y = jumpPower;
 
             canDoubleJump = false;
+            
+            AudioManager.instance.PlaySFX(0);
         }
     }
 

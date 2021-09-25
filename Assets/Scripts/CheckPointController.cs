@@ -34,6 +34,7 @@ public class CheckPointController : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             PlayerPrefs.SetString(SceneManager.GetActiveScene().name + "_cp", cpName);
+            AudioManager.instance.PlaySFX(1);
         }
     }
 }
