@@ -53,10 +53,13 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        PlayerMovement();
-        CameraRotation();
-        Shooting();
-        PlayBobbing();
+        if (!UIController.instance.pauseScreen.activeInHierarchy && !GameManager.instance.ending)
+        {
+            PlayerMovement();
+            CameraRotation();
+            Shooting();
+            PlayBobbing();
+        }
     }
 
     void PlayerMovement()
@@ -112,7 +115,7 @@ public class PlayerController : MonoBehaviour
             moveInput.y = jumpPower;
 
             canDoubleJump = true;
-            
+
             AudioManager.instance.PlaySFX(0);
         }
         else if (canDoubleJump && Input.GetKeyDown(KeyCode.Space))
@@ -120,7 +123,7 @@ public class PlayerController : MonoBehaviour
             moveInput.y = jumpPower;
 
             canDoubleJump = false;
-            
+
             AudioManager.instance.PlaySFX(0);
         }
 
@@ -132,7 +135,7 @@ public class PlayerController : MonoBehaviour
             canDoubleJump = true;
         }
     }
-    
+
     void PlayBobbing()
     {
         anim.SetFloat("moveSpeed", moveInput.magnitude);
@@ -142,7 +145,7 @@ public class PlayerController : MonoBehaviour
     void Shooting()
     {
         muzzleFlash.SetActive(false);
-        
+
         if (Input.GetMouseButtonDown(0) && activeGun.fireCounter <= 0)
         {
             RaycastHit hit;
@@ -187,7 +190,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            gunHolder.localPosition = Vector3.MoveTowards(gunHolder.localPosition, gunStartPosition, adsSpeed * Time.deltaTime);
+            gunHolder.localPosition =
+                Vector3.MoveTowards(gunHolder.localPosition, gunStartPosition, adsSpeed * Time.deltaTime);
         }
 
         if (Input.GetMouseButtonUp(1))
@@ -207,7 +211,7 @@ public class PlayerController : MonoBehaviour
             activeGun.fireCounter = activeGun.fireRate;
 
             UIController.instance.ammoText.text = "Ammo: " + activeGun.currentAmmo;
-            
+
             muzzleFlash.SetActive(true);
         }
     }

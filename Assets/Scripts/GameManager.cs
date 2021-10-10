@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
 
     private float waitAfterDying = 2.0f;
 
+    [HideInInspector] public bool ending;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;

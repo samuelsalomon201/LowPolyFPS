@@ -80,7 +80,7 @@ MonoBehaviour:
   lifeTime: 5
   rigidBody: {fileID: 723821992692994720}
   impactEffect: {fileID: 2746721728765411811, guid: 77237e3005137f747bb1f4163bd2cfa2, type: 3}
-  damage: 1
+  damage: 20
   damageEnemy: 0
   damagePlayer: 1
 --- !u!1001 &2307280944199563767

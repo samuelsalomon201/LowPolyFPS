@@ -36,7 +36,7 @@ public class PlayerHealthController : MonoBehaviour
 
     public void DamagePlayer(int damageAmount)
     {
-        if (invincCounter <= 0)
+        if (invincCounter <= 0 &&  !GameManager.instance.ending)
         {
             AudioManager.instance.PlaySFX(6);
             currentHealth -= damageAmount;
