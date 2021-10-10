@@ -33,6 +33,11 @@ public class PlayerController : MonoBehaviour
     private Vector3 gunStartPosition;
     [SerializeField] private float adsSpeed = 2.0f;
 
+    [SerializeField] private GameObject muzzleFlash;
+
+    private float bounceAmount;
+    private bool bounce;
+
     private void Awake()
     {
         instance = this;
@@ -118,8 +123,16 @@ public class PlayerController : MonoBehaviour
             
             AudioManager.instance.PlaySFX(0);
         }
-    }
 
+        if (bounce)
+        {
+            bounce = false;
+            moveInput.y = bounceAmount;
+
+            canDoubleJump = true;
+        }
+    }
+    
     void PlayBobbing()
     {
         anim.SetFloat("moveSpeed", moveInput.magnitude);
@@ -128,6 +141,8 @@ public class PlayerController : MonoBehaviour
 
     void Shooting()
     {
+        muzzleFlash.SetActive(false);
+        
         if (Input.GetMouseButtonDown(0) && activeGun.fireCounter <= 0)
         {
             RaycastHit hit;
@@ -192,6 +207,8 @@ public class PlayerController : MonoBehaviour
             activeGun.fireCounter = activeGun.fireRate;
 
             UIController.instance.ammoText.text = "Ammo: " + activeGun.currentAmmo;
+            
+            muzzleFlash.SetActive(true);
         }
     }
 
@@ -239,6 +256,12 @@ public class PlayerController : MonoBehaviour
             currentGun = allGuns.Count - 2;
             SwitchGun();
         }
+    }
+
+    public void Bounce(float bounceForce)
+    {
+        bounceAmount = bounceForce;
+        bounce = true;
     }
 
     public void LowerGravity()
