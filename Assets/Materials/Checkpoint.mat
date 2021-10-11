@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: portal
+  m_Name: Checkpoint
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 2
@@ -73,6 +73,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.5058824, g: 0.2627451, b: 0.5647059, a: 1}
-    - _EmissionColor: {r: 0.29803923, g: 0, b: 1.0117648, a: 1}
+    - _Color: {r: 0.07629776, g: 0, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 23.968628, b: 22.462746, a: 1}
   m_BuildTextureStacks: []

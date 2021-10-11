@@ -9,29 +9,21 @@ public class LevelExit : MonoBehaviour
     [SerializeField] private string nextLevel;
     [SerializeField] private float waitToEndLevel;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
             GameManager.instance.ending = true;
             StartCoroutine(EndLevelCo());
+            
+            AudioManager.instance.PlayLevelVictory();
         }
     }
 
     private IEnumerator EndLevelCo()
     {
+        PlayerPrefs.SetString(nextLevel + "_cp", "");
+        
         yield return new WaitForSeconds(waitToEndLevel);
         
         SceneManager.LoadScene(nextLevel);

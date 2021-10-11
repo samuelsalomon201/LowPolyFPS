@@ -6,7 +6,7 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
-    [SerializeField] private AudioSource bgm;
+    [SerializeField] private AudioSource bgm, victory;
     [SerializeField] private AudioSource[] soundEffects;
     private void Awake()
     {
@@ -28,6 +28,12 @@ public class AudioManager : MonoBehaviour
     public void StopBGM()
     {
         bgm.Stop();
+    }
+
+    public void PlayLevelVictory()
+    {
+        StopBGM();
+        victory.Play();
     }
 
     public void PlaySFX(int sfxNumber)
