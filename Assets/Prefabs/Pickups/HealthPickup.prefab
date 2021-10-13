@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5071113804327046749}
   - component: {fileID: 5071113804327046748}
   - component: {fileID: 3654576992257622339}
+  - component: {fileID: 2000482321783864058}
   m_Layer: 0
   m_Name: HealthPickup
   m_TagString: Untagged
@@ -65,6 +66,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healAmount: 20
+--- !u!65 &2000482321783864058
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5071113804327046738}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.7088048, z: 1}
+  m_Center: {x: 0, y: 1.0564946, z: 0}
 --- !u!1001 &5071113804121165948
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -271,8 +271,8 @@ public class PlayerController : MonoBehaviour
     public void LowerGravity()
     {
         gravityModifier = lowGravity;
-        moveSpeed = 4.0f;
-        runSpeed = 6.0f;
+        moveSpeed = 1.0f;
+        runSpeed = 2.0f;
     }
 
     public void GravityBack()
