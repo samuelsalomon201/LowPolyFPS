@@ -4945,8 +4945,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd5441d0d9f06094ca129fb3334169e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  lifeTime: 20
+  moveSpeed: 120
+  lifeTime: 10
   rigidBody: {fileID: 4119758651272892591}
   impactEffect: {fileID: 3545522357176883074, guid: 5067e90c16faec740b2dd2a26ce2d375, type: 3}
   damage: 5
