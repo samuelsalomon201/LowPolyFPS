@@ -16,6 +16,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float fireRate, waitBetweenShots, timeToShoot = 1.0f;
     private float fireCount, shotWaitCounter, shootTimeCounter;
     [SerializeField] private Animator anim;
+    private bool wasShot;
 
     void Start()
     {
@@ -134,5 +135,14 @@ public class EnemyController : MonoBehaviour
                 anim.SetBool("isMoving", false);
             }
         }
+    }
+
+    public void GetShot()
+    {
+        wasShot = true;
+
+        chasing = true;
+
+        agent.destination = PlayerController.instance.transform.position;
     }
 }

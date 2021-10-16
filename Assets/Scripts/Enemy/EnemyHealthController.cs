@@ -5,7 +5,9 @@ using UnityEngine;
 public class EnemyHealthController : MonoBehaviour
 {
     [SerializeField] private int currentHealth = 10;
-    
+
+    public EnemyController enemyController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,10 @@ public class EnemyHealthController : MonoBehaviour
     public void DamageEnemy(int damageAmount)
     {
         currentHealth -= damageAmount;
+        if (enemyController != null)
+        {
+            enemyController.GetShot();
+        }
 
         if (currentHealth <= 0)
         {
